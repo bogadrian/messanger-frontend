@@ -1,0 +1,6 @@
+const setMessagesActions = {
+  START_FETCH_BY_EMAIL: 'START_FETCH_BY_EMAIL',
+  FETCH_BY_EMAIL_SUCCESS: 'FETCH_BY_EMAIL_SUCCESS',
+  FETCH_BY_EMAIL_FAILURE: 'FETCH_BY_EMAIL_FAILURE'
+};
+export default setMessagesActions;

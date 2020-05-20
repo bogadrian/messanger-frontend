@@ -1,27 +1,21 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import './InfoBar.css';
 
-const InfoBar = ({ notifica, messages, name }) => {
-  const trimmedName = name.trim().toLowerCase();
-
-  const mess = messages.find(ms => ms.user === trimmedName);
-  if (mess) {
-  }
-
-  let isSentByCurrentUser = false;
-
-  if (mess && mess.user && mess.user !== trimmedName) {
-    isSentByCurrentUser = true;
-  }
+const InfoBar = ({ name }) => {
   return (
     <div className="infoBar">
-      <div className="leftInnerContainer"></div>
-      <div className="rightInnerContainer">
+      <div className="leftInnerContainer">
         <div>
-          <p>You have new message</p>
+          <span
+            style={{ color: 'white', fontSize: '18px', paddingLeft: '4px' }}
+          >
+            {name}
+          </span>
         </div>
       </div>
+      <div className="rightInnerContainer"></div>
     </div>
   );
 };

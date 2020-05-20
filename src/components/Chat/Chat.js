@@ -15,6 +15,7 @@ let socket;
 
 const Chat = ({ location }) => {
   const [name, setName] = useState('');
+  const [reciver, setReciver] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [room, setRoom] = useState('');
@@ -36,10 +37,11 @@ const Chat = ({ location }) => {
 
     setName(name);
     setRoom(room);
+    setReciver(reciver);
 
     socket.emit(
       'join',
-      { name, reciver, reciverEmail, myEmail, room },
+      { name, room, reciver, myEmail, reciverEmail },
       error => {
         if (error) {
           console.log(error);
@@ -95,7 +97,7 @@ const Chat = ({ location }) => {
   return (
     <div className="outerContainer">
       <div className="container">
-        <InfoBar messages={messages} name={name} />
+        <InfoBar messages={messages} name={reciver} />
         <Messages messages={messages} name={name} />
         <Input
           message={message}

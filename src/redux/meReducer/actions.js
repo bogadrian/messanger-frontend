@@ -1,5 +1,6 @@
 import getMeActions from './types';
 import axios from 'axios';
+const url = process.env.REACT_APP_PYT_BACKEND;
 
 export const startFetchMe = () => ({
   type: getMeActions.START_FETCH_ME
@@ -18,7 +19,7 @@ export const fetchFailure = error => ({
 export const fetchMe = token => {
   return async dispatch => {
     try {
-      const urlMe = `${process.env.REACT_APP_PYT_BACKEND}/api/v1/users/me`;
+      const urlMe = `${url}/api/v1/users/me`;
       dispatch(startFetchMe());
 
       const axiosInstance = await axios.create({

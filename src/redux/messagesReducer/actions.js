@@ -1,6 +1,6 @@
 import messagesActions from './types';
 import axios from 'axios';
-
+const url = process.env.REACT_APP_MESSANGER_BACKEND;
 export const startFetchMessages = () => ({
   type: messagesActions.START_FETCH_MESSAGES
 });
@@ -16,9 +16,7 @@ export const fetchMessages = room => {
   return async dispatch => {
     try {
       dispatch(startFetchMessages());
-      const mes = await axios.get(
-        `${process.env.REACT_APP_MESSANGER_BACKEND}/${room}`
-      );
+      const mes = await axios.get(`${url}/${room}`);
 
       dispatch(fetchMessagesSuccess(mes.data.data));
     } catch (err) {

@@ -37,7 +37,7 @@ const Home = () => {
   // call the room
   useEffect(() => {
     dispatch(fetchMessagesByEmail(myEmail));
-  }, [myEmail]);
+  }, [myEmail, dispatch]);
 
   return (
     <Fragment>
@@ -51,11 +51,10 @@ const Home = () => {
                   <h3 style={{ color: 'white' }}>Go back</h3>
                 </a>
               </div>
-            ) : null}
+            ) : (
+              <RoomList room={mes} myEmail={myEmail} />
+            )}
           </div>
-        </div>
-        <div>
-          {mes.length > 0 ? <RoomList room={mes} myEmail={myEmail} /> : null}
         </div>
       </div>
     </Fragment>

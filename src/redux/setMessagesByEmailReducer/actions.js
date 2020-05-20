@@ -1,5 +1,6 @@
 import setMessagesActions from './types';
 import axios from 'axios';
+const url = process.env.REACT_APP_MESSANGER_BACKEND;
 
 export const startFetchMessagesByEmail = () => ({
   type: setMessagesActions.START_FETCH_BY_EMAIL
@@ -19,9 +20,7 @@ export const fetchMessagesByEmail = email => {
   return async dispatch => {
     try {
       dispatch(startFetchMessagesByEmail());
-      const mes = await axios.get(
-        `${process.env.REACT_APP_MESSANGER_BACKEND}/messages/${email}`
-      );
+      const mes = await axios.get(`${url}/messages/${email}`);
 
       dispatch(fetchMessagesSuccessByEmail(mes.data.data));
     } catch (err) {

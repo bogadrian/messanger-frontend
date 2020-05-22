@@ -1,21 +1,22 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
 
 import './InfoBar.css';
+import Img from './blue-arrow.png';
 
 const InfoBar = ({ name }) => {
   return (
     <div className="infoBar">
       <div className="leftInnerContainer">
-        <div>
-          <span
-            style={{ color: 'white', fontSize: '18px', paddingLeft: '4px' }}
-          >
-            {name}
-          </span>
-        </div>
+        <a href="https://park-your-tir.netlify.app">
+          <img src={Img} alt="blue" style={{ height: '30px' }} />
+        </a>
+        <div></div>
       </div>
-      <div className="rightInnerContainer"></div>
+      <div className="rightInnerContainer">
+        <span style={{ color: 'white', fontSize: '18px', paddingLeft: '4px' }}>
+          {name}
+        </span>
+      </div>
     </div>
   );
 };

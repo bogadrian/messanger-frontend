@@ -13,6 +13,7 @@ import './Join.css';
 const Home = () => {
   const myEmail = useSelector(state => state.me.me);
   const { token } = queryString.parse(location.search);
+  console.log(token);
 
   let mes = [];
   const mess = useSelector(state => state.messagesEmail);
@@ -48,11 +49,14 @@ const Home = () => {
           <div>
             {mes.length === 0 ? (
               <div>
-                <h2 style={{ color: 'white' }}>
-                  {token
-                    ? 'You can now recive messages'
-                    : 'You turned your messages off!'}
-                </h2>
+                {token ? (
+                  <h2 style={{ color: 'white' }}>
+                    You can now recive messages
+                  </h2>
+                ) : (
+                  <h2 style={{ color: 'white' }}>Your messages are off!</h2>
+                )}
+
                 <a href={`${process.env.REACT_APP_PYT_FRONTEND}/my-profile`}>
                   <h3 style={{ color: 'white' }}>Go back</h3>
                 </a>

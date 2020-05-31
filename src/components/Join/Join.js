@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Fragment } from 'react';
+/* eslint-disable no-restricted-globals */
+import React, { useEffect, Fragment } from 'react';
 
 import queryString from 'query-string';
 
@@ -10,9 +11,9 @@ import RoomList from './RoomLists';
 import './Join.css';
 
 const Home = () => {
-  const [token, setToken] = useState();
   const myEmail = useSelector(state => state.me.me);
-  console.log(process.env.REACT_APP_URL);
+  const { token } = queryString.parse(location.search);
+
   let mes = [];
   const mess = useSelector(state => state.messagesEmail);
 
@@ -26,14 +27,13 @@ const Home = () => {
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
     const { token, enabled } = queryString.parse(location.search);
-    setToken(token);
 
     if (token && enabled) {
       localStorage.setItem('token', token);
     } else {
       localStorage.removeItem('token');
     }
-  }, [token]);
+  }, []);
 
   ////////////////////////////////////////////////////////////////////////////////
   // call the room
